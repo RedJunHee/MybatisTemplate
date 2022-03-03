@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://person.jjhserverworld.pe.kr:49153;instanceName=SpringApplication;DatabaseName=AdventureWorks2017
+    username: SA
+    password: rkwhr485!@
