@@ -2,8 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.pe.study.mybatisstudy.mapper.Sales">
 
-    <select id="getSales" resultType="kr.pe.study.mybatisstudy.dao.SalesDTO">
-        SELECT CurrencyCode, Name FROM Sales.Currency
+    <select id="getAllCustomer" statementType="CALLABLE"
+            resultType="kr.pe.study.mybatisstudy.dao.Customer">
+        {call uspSelectCustomer()}
     </select>
 
+    <select id="getCustomer" statementType="CALLABLE"
+            parameterType="Integer" resultType="kr.pe.study.mybatisstudy.dao.Customer">
+        {call uspSelectCustomer(
+            #{customerID, mode=IN ,jdbcType=INTEGER }
+        )}
+    </select>
+
+    <select id="getCustomerFromObjectInput" statementType="CALLABLE"
+            parameterType="kr.pe.study.mybatisstudy.dao.Customer" resultType="kr.pe.study.mybatisstudy.dao.Customer">
+        {call uspSelectCustomer(
+                #{customerID, mode=IN ,jdbcType=INTEGER }
+            )}
+    </select>
+
+    <select id="getCustomerOfPerson" statementType="CALLABLE"
+            parameterType="kr.pe.study.mybatisstudy.dao.Customer"
+            resultType="kr.pe.study.mybatisstudy.dao.Customer">
+        {call uspSelectCustomerPerson(
+                #{customerID, mode=IN ,jdbcType=INTEGER }
+            ,   #{personID, mode=IN ,jdbcType=INTEGER }
+            )}
+    </select>
 </mapper>

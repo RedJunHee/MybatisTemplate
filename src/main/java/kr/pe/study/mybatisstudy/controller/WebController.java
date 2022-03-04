@@ -1,7 +1,9 @@
 package kr.pe.study.mybatisstudy.controller;
 
-import kr.pe.study.mybatisstudy.dao.SalesDTO;
+import kr.pe.study.mybatisstudy.dao.Customer;
+import kr.pe.study.mybatisstudy.dao.Person;
 import kr.pe.study.mybatisstudy.mapper.Sales;
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,16 +19,54 @@ public class WebController {
     @Autowired
     Sales SalesService;
 
+
     @ResponseBody
-    @RequestMapping("/")
-    public String startPoint() {
-        System.out.println(" / 타는지 ");
+    @RequestMapping("/allCustomer")
+    public String getAllCustomer() {
 
-        List<SalesDTO> salesList = SalesService.getSales();
+        List<Customer> customerList = SalesService.getAllCustomer();
 
-        for(SalesDTO sale : salesList)
-            System.out.println(sale.toString());
+        for(Customer customer : customerList)
+            System.out.println(customer.toString());
 
         return "aa";
     }
+
+    @ResponseBody
+    @RequestMapping("/customer")
+    public String getCustomer(@Param("customerID") int customerID) {
+
+        Customer customer = SalesService.getCustomer(customerID);
+
+            System.out.println(customer.toString());
+
+        return "aa";
+    }
+
+    @ResponseBody
+    @RequestMapping("/customerFromObjectInput")
+    public String getCustomerFromObjectInput(@Param("customerID") int customerID) {
+
+        Customer customer = SalesService.getCustomerFromObjectInput(new Customer(customerID,null,null,null,null,null,null));
+
+        System.out.println(customer.toString());
+
+        return "aa";
+    }
+
+    @ResponseBody
+    @RequestMapping("/customerOfPerson")
+    public String getCustomerOfPerson(@Param("customerID") int customerID
+                                    ,@Param("personID") int personID) {
+
+        Object customer = SalesService.getCustomerOfPerson(new Customer(customerID,personID,null,null,null,null,null));
+
+        System.out.println(customer.toString());
+
+        return "aa";
+    }
+
+
+
+
 }
