@@ -24,6 +24,18 @@
             </Policies>
             <DefaultRolloverStrategy max="5" fileIndex="min" /><!-- 롤링 파일 5개 까지 생성 -->
         </RollingFile>
+
+        <RollingFile name="daily_error"
+                     fileName="logs/error/error.log"
+                     filePattern="logs/error/error.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${fileLayout}" />
+            <LevelRangeFilter minLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="20 MB" />
+            </Policies>
+        </RollingFile>
+
+
     </Appenders>
 
     <!--TRACE > DEBUG > INFO > WARN > ERROR > FATAL -->
@@ -36,9 +48,13 @@
         </logger>
 
         <!-- rolling file에는 debug, console에는 info 분리하여 처리 가능하다. -->
-        <logger name="kr.pe.study.mybatisstudy" level="info" additivity="false" >
+        <logger name="kr.pe.study.mybatisstudy" level="warn" additivity="false" >
             <AppenderRef ref="console" />
             <AppenderRef ref="file"  />
+            <AppenderRef ref="daily_error" />
         </logger>
+
+
+        <Root level="info"></Root>
     </Loggers>
 </Configuration>

@@ -37,7 +37,7 @@ public class WebController {
     @RequestMapping("/customer")
     public String getCustomer(@Param("customerID") int customerID) {
         logger.info("info-getCustomer");
-
+        logger.warn("warn-getCustomer");
         Customer customer = SalesService.getCustomer(customerID);
 
         System.out.println(customer.toString());

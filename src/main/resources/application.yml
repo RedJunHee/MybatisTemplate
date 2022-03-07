@@ -3,4 +3,4 @@ server:
 
 spring:
   profiles:
-    default: dev # 환경 create/dev/prod
+    default: create # 환경 create/dev/prod
