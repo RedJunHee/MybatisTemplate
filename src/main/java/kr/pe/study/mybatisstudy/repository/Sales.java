@@ -1,7 +1,6 @@
-package kr.pe.study.mybatisstudy.mapper;
+package kr.pe.study.mybatisstudy.repository;
 
 import kr.pe.study.mybatisstudy.dao.Customer;
-import kr.pe.study.mybatisstudy.dao.Person;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

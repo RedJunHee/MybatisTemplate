@@ -10,3 +10,6 @@ mybatis:
   configuration:
     call-setters-on-nulls: true
     return-instance-for-empty-row: true
+
+logging:
+  config: classpath:log4j2.xml
