@@ -21,12 +21,4 @@
             )}
     </select>
 
-    <select id="getCustomerOfPerson" statementType="CALLABLE"
-            parameterType="kr.pe.study.mybatisstudy.dao.Customer"
-            resultType="kr.pe.study.mybatisstudy.dao.Customer">
-        {call uspSelectCustomerPerson(
-                #{customerID, mode=IN ,jdbcType=INTEGER }
-            ,   #{personID, mode=IN ,jdbcType=INTEGER }
-            )}
-    </select>
 </mapper>
