@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   config:
@@ -10,7 +10,6 @@ spring:
     url: jdbc:sqlserver://person.jjhserverworld.pe.kr:49153;instanceName=SpringApplication;DatabaseName=AdventureWorks2017
     username: SA
     password: rkwhr485!@
-
 
 mybatis:
   configuration:
